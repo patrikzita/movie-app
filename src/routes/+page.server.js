@@ -14,6 +14,7 @@ export async function load() {
 	const data = await axios
 		.get('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
 		.then((response) => response.data.results);
+
 	return {
 		popular: data
 	};

@@ -16,8 +16,8 @@
 	console.log(data);
 </script>
 
-<div class=" bg-slate-400 md:py-16">
-	<div class="container bg-white mx-auto p-8 md:rounded-3xl">
+<div class="bg-slate-400 p-0 md:py-16">
+	<div class="md:container bg-white mx-auto p-8 md:rounded-3xl">
 		<header class="my-4">
 			<div class="flex justify-between">
 				<h1 class="text-2xl font-semibold">{data.details.title}</h1>
@@ -52,14 +52,14 @@
 				<div class="flex flex-col xss:flex-row gap-2 h-30vh">
 					<div class="xss:w-1/3">
 						<img
-							class="h-full object-cover rounded-l-lg"
+							class="h-full object-cover xss:rounded-l-lg"
 							src={'https://image.tmdb.org/t/p/w500' + data.details.backdrop_path}
 							alt=""
 						/>
 					</div>
 					{#if video.site === 'YouTube'}
 						<iframe
-							class="xss:w-2/3 rounded-r-lg"
+							class="xss:w-2/3 xss:rounded-r-lg"
 							title={data.details.title}
 							src={`https://www.youtube.com/embed/${video.key}`}
 							frameborder="0"
@@ -68,12 +68,12 @@
 						/>
 					{/if}
 				</div>
-				<div class="mt-12 my-4 xss:my-3 ">
-					<div class="clamp" class:clamp-open={showFullOverview}>
+				<div class="mt-16 mb-4 xss:my-4">
+					<div class="clamp pt-16 xss:pt-0" class:clamp-open={showFullOverview}>
 						<p>{data.details.overview}</p>
 					</div>
 					<button
-						class=" text-blue-600 rounded cursor-pointer"
+						class="text-blue-600 rounded cursor-pointer"
 						on:click={() => (showFullOverview = !showFullOverview)}
 					>
 						{showFullOverview ? '- Less' : '+ More'}
