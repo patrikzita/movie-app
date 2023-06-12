@@ -1,9 +1,7 @@
 <script>
 	import '../index.css';
+	import Navbar from '../components/home/Navbar.svelte';
 </script>
 
-<nav>
-	<a href="/">Home</a>
-	<a href="/about">About</a>
-</nav>
+<Navbar />
 <slot />
