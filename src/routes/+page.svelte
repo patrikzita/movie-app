@@ -4,6 +4,6 @@
 	import PopularMovies from '../components/PopularMovies.svelte';
 </script>
 
-<section class="container mx-auto py-10">
+<section class="container mx-auto py-10 lg:px-10">
 	<PopularMovies movies={data.popular} />
 </section>

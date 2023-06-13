@@ -7,6 +7,8 @@
 	import MdShare from 'svelte-icons/md/MdShare.svelte';
 	import MdLibraryAdd from 'svelte-icons/md/MdLibraryAdd.svelte';
 	import FaRegStar from 'svelte-icons/fa/FaRegStar.svelte';
+	import Modal from '../../../components/Modal.svelte';
+	import { isModalOpen } from '../../../utils/store';
 
 	/**
 	 * @type {import('./$types').PageData}
@@ -35,9 +37,24 @@
 			icon: MdShare
 		}
 	];
+	/**
+	 * @type {boolean}
+	 */
+	let isOpen;
+	isModalOpen.subscribe((value) => {
+		isOpen = value;
+	});
+	function openModal() {
+		isModalOpen.set(true);
+		console.log(isOpen);
+	}
+	function closeModal() {
+		isModalOpen.set(false);
+		console.log(isOpen);
+	}
 </script>
 
-<div class="bg-slate-400 p-0 md:py-16">
+<div class="bg-slate-400 p-0 md:py-16 lg:px-64">
 	<div class="md:container bg-white mx-auto p-8 md:rounded-3xl">
 		<header class="my-4">
 			<div class="flex justify-between">
@@ -129,6 +146,10 @@
 						</div>
 					</div>
 				</div>
+				<div>
+					<button on:click={openModal}>Open Modal</button>
+					<button on:click={closeModal}>Close Modal</button>
+				</div>
 			</main>
 			<aside class="hidden md:block md:w-2/5">
 				<div
@@ -142,10 +163,12 @@
 					</div>
 					<p class="text-sm">Average review</p>
 				</div>
-				<div class="flex gap-3 my-6 justify-around">
+				<div class="flex gap-1 my-6 justify-between">
 					{#each actions as action}
 						<div class="flex flex-col items-center gap-2">
-							<div class="p-3 border-2 rounded-full hover:bg-slate-200 focus:bg-slate-200 cursor-pointer">
+							<div
+								class="p-3 border-2 rounded-full hover:bg-slate-200 focus:bg-slate-200 cursor-pointer"
+							>
 								<div class="h-6 w-6 text-gray-700">
 									<svelte:component this={action.icon} />
 								</div>
