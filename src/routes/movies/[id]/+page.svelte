@@ -3,6 +3,10 @@
 	import { formatCurrency } from '../../../utils/formatCurrency';
 	import { assignRatingColor, convertRatingToPercentage } from '../../../utils/utils';
 	import { cn } from '../../../utils/utils';
+	import FaRegHeart from 'svelte-icons/fa/FaRegHeart.svelte';
+	import FaShareAlt from 'svelte-icons/fa/FaShareAlt.svelte';
+	import MdLibraryAdd from 'svelte-icons/md/MdLibraryAdd.svelte';
+	import FaRegStar from 'svelte-icons/fa/FaRegStar.svelte';
 
 	/**
 	 * @type {import('./$types').PageData}
@@ -13,7 +17,24 @@
 	let video = data.details.videos[0];
 	let showFullOverview = false;
 
-	console.log(data);
+	let actions = [
+		{
+			name: 'Review',
+			icon: FaRegStar
+		},
+		{
+			name: 'Watchlist',
+			icon: MdLibraryAdd
+		},
+		{
+			name: 'Favorite',
+			icon: FaRegHeart
+		},
+		{
+			name: 'Share',
+			icon: FaShareAlt
+		}
+	];
 </script>
 
 <div class="bg-slate-400 p-0 md:py-16">
@@ -120,6 +141,18 @@
 						{percentage}%
 					</div>
 					<p class="text-sm">Average review</p>
+				</div>
+				<div class="flex gap-3 my-6 justify-around">
+					{#each actions as action}
+						<div class="flex flex-col items-center gap-2">
+							<div class="p-3 border-2 rounded-full">
+								<div class="h-6 w-6 text-gray-700">
+									<svelte:component this={action.icon} />
+								</div>
+							</div>
+							<p>{action.name}</p>
+						</div>
+					{/each}
 				</div>
 			</aside>
 		</div>
