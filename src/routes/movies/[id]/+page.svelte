@@ -4,7 +4,7 @@
 	import { assignRatingColor, convertRatingToPercentage } from '../../../utils/utils';
 	import { cn } from '../../../utils/utils';
 	import FaRegHeart from 'svelte-icons/fa/FaRegHeart.svelte';
-	import FaShareAlt from 'svelte-icons/fa/FaShareAlt.svelte';
+	import MdShare from 'svelte-icons/md/MdShare.svelte';
 	import MdLibraryAdd from 'svelte-icons/md/MdLibraryAdd.svelte';
 	import FaRegStar from 'svelte-icons/fa/FaRegStar.svelte';
 
@@ -32,7 +32,7 @@
 		},
 		{
 			name: 'Share',
-			icon: FaShareAlt
+			icon: MdShare
 		}
 	];
 </script>
@@ -145,7 +145,7 @@
 				<div class="flex gap-3 my-6 justify-around">
 					{#each actions as action}
 						<div class="flex flex-col items-center gap-2">
-							<div class="p-3 border-2 rounded-full">
+							<div class="p-3 border-2 rounded-full hover:bg-slate-200 focus:bg-slate-200 cursor-pointer">
 								<div class="h-6 w-6 text-gray-700">
 									<svelte:component this={action.icon} />
 								</div>
